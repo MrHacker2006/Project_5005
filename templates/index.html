@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indic Radar - Geopolitical Predictor</title>
+    <!-- CSS file ko link kar rahe hain -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='Style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Geopolitical Event Sentiment Predictor</h1>
+        <p class="subtitle">Enter global news headlines to analyze their real geopolitical impact.</p>
+
+       <!-- Input Form (News Text Block) -->
+        <form id="prediction-form" action="/predict" method="POST">
+            <!-- Dhyan do: name="news_text" add kiya hai -->
+            <textarea id="news-input" name="headline_text" rows="5" required 
+oninput="let words = this.value.match(/\S+/g); if (words && words.length > 60) { this.value = words.slice(0, 60).join(' '); alert('Maximum 60 words allowed!'); }"></textarea>
+<button type="submit" id="predict-btn">Predict Impact</button>
+        </form>
+
+       <!-- Jinja2 If Condition: Result tabhi dikhega jab backend koi 'result' bhejega -->
+        {% if result %}
+        <div class="results-container" id="results-section">
+            <h2>Analysis Results</h2>
+            <div class="cards-grid">
+                
+                <div class="card">
+                    <h3>Base Sentiment</h3>
+                    <!-- Nayi keys use kar rahe hain -->
+                    <p class="result-text">{{ result.base_vader_score }} ({{ result.base_vader_sentiment }})</p> 
+                </div>
+                
+                <div class="card">
+                    <h3>Involved Countries</h3>
+                    <p class="result-text">{{ result.entities_detected }}</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Event Category</h3>
+                    <p class="result-text">{{ result.event_category }}</p>
+                </div>
+                
+                <!-- Jinja if/else logic for Dynamic CSS -->
+                {% if 'Positive' in result.final_indic_sentiment %}
+                    <div class="card highlight-card-positive">
+                {% else %}
+                    <div class="card highlight-card-negative">
+                {% endif %}
+                    <h3>Indic Context Impact</h3>
+                    <p class="result-text">{{ result.final_indic_sentiment }}</p>
+                </div>
+
+            </div>
+        </div>
+        {% endif %}
+</body>
+</html>

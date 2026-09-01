@@ -1,0 +1,135 @@
+/* 1. Basic Reset aur Font Setup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6; /* Halka grey background */
+    color: #333;
+    padding: 40px 20px;
+}
+
+/* 2. Main Container Design */
+.container {
+    max-width: 900px;
+    margin: 0 auto; /* Center karne ke liye */
+    background: #ffffff; /* Safed background */
+    padding: 30px;
+    border-radius: 10px; /* Gol kinare */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Halka sa shadow 3D effect ke liye */
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #7f8c8d;
+}
+
+/* 3. Form aur Textarea Design (Flexbox use karke) */
+form {
+    display: flex;
+    flex-direction: column; /* Elements ko ek ke niche ek rakhne ke liye */
+    gap: 15px; /* Elements ke beech ki jagah */
+    margin-bottom: 40px;
+}
+
+textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical; /* User isko sirf lamba kar sakta hai, chauda nahi */
+}
+
+button {
+    padding: 12px 20px;
+    background-color: #2980b9; /* Blue color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s; /* Smooth animation jab hover karein */
+}
+
+button:hover {
+    background-color: #1c5980; /* Hover par dark blue */
+}
+
+/* 4. Result Cards Grid (Responsive Design) */
+.results-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cards-grid {
+    display: grid;
+    /* CSS Grid Magic: Screen choti hogi toh automatically cards niche shift ho jayenge */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* Normal Card Style */
+.card {
+    background: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #dcdde1;
+}
+
+.card h3 {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+    text-transform: uppercase; /* Text ko capital letters mein karne ke liye */
+}
+
+.result-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* 5. Highlighted Card Style (Tumhara Custom Engine Output) */
+.highlight-card {
+    background: #fff3e0; /* Halka orange/yellow background */
+    border: 2px solid #e67e22; /* Mota orange border */
+    box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3); /* Orange shadow */
+}
+
+.highlight-card h3 {
+    color: #d35400; /* Dark orange heading */
+}
+
+.highlight-card .result-text {
+    color: #e67e22; 
+    font-size: 22px; /* Baki cards se thoda bada text */
+}
+/* Negative Impact Card (Purana orange/red wala) */
+.highlight-card-negative {
+    background: #fff3e0; 
+    border: 2px solid #e67e22; 
+    box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3); 
+}
+.highlight-card-negative h3 { color: #d35400; }
+.highlight-card-negative .result-text { color: #e67e22; font-size: 22px; }
+
+/* Positive Impact Card (Naya Green/Blue wala) */
+.highlight-card-positive {
+    background: #e8f5e9; /* Halka green */
+    border: 2px solid #2ecc71; /* Bright green border */
+    box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3); 
+}
+.highlight-card-positive h3 { color: #27ae60; }
+.highlight-card-positive .result-text { color: #2ecc71; font-size: 22px; }
